@@ -22,6 +22,15 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    assert num_rolls < 11 ,'Ten dices is the most'
+    res = 0
+    while num_rolls > 0:
+        if dice() == 1:
+            return 1
+        else:
+            res += dice()
+            num_rolls -= 1
+    return res 
     # END PROBLEM 1
 
 
@@ -33,6 +42,10 @@ def free_bacon(score):
     assert score < 100, 'The game should be over.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    if score < 10:
+        return 2 + abs(0-score)
+    else:
+        return 2 + abs(score//10 - score % 10)
     # END PROBLEM 2
 
 
