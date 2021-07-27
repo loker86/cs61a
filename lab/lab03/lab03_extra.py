@@ -31,6 +31,21 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def cycle_n_times(n):
+        def start_with_x(x):
+            count = 1
+            while count <= n:
+                if count % 3 == 1:
+                    x = f1(x)
+                elif count % 3 == 2:
+                    x = f2(x)
+                else:
+                    x = f3(x)
+                count += 1
+            return x
+        return start_with_x
+    return 
+
     
 
 ## Lambda expressions
@@ -103,7 +118,12 @@ def interleaved_sum(n, odd_term, even_term):
     29
     """
     "*** YOUR CODE HERE ***"
-
+    def helper(i, term0, term1):
+        if i <= n:
+            return term0(i) + helper(i+1, term1, term0)
+        else:
+            return 0
+    return helper(1, odd_term, even_term)
 
 def ten_pairs(n):
     """Return the number of ten-pairs within positive integer n.

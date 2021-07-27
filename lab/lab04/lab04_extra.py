@@ -17,6 +17,7 @@ def flatten(lst):
     """
     "*** YOUR CODE HERE ***"
 
+
 # Q7
 def merge(lst1, lst2):
     """Merges two sorted lists.
@@ -31,6 +32,7 @@ def merge(lst1, lst2):
     [2, 4, 5, 6, 7]
     """
     "*** YOUR CODE HERE ***"
+    return lst1 + lst2
 
 ######################
 ### Connect N Game ###

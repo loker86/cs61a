@@ -15,6 +15,11 @@ def if_this_not_that(i_list, this):
     5
     """
     "*** YOUR CODE HERE ***"
+    for i in range(len(i_list)):
+        if i_list[i] <= this:
+            print('that')
+        else:
+            print(i_list[i])
 
 # City ADT
 def make_city(name, lat, lon):
@@ -67,6 +72,7 @@ def distance(city1, city2):
     5.0
     """
     "*** YOUR CODE HERE ***"
+    return sqrt((get_lat(city1) - get_lat(city2))**2 + (get_lon(city1) - get_lon(city2))**2)
 
 # Q5
 def closer_city(lat, lon, city1, city2):
@@ -84,6 +90,15 @@ def closer_city(lat, lon, city1, city2):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
+    city_test = make_city('test', lat, lon)
+    # if distance(city_test,city1) < distance(city_test,city2):
+    #     return get_name(city1)
+    # else:
+    #     return get_name(city2)
+
+    # return get_name(city1) if distance(city_test,city1) < distance(city_test,city2) else get_name(city2)
+
+    return distance(city_test,city1) < distance(city_test,city2) and get_name(city1) or get_name(city2)
 
 # Q6
 # This is another implementation of the City ADT. Make sure
