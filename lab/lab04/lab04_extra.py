@@ -16,6 +16,8 @@ def flatten(lst):
     [1, 1, 1, 1, 1, 1]
     """
     "*** YOUR CODE HERE ***"
+    flat = lambda x: [y for lst in x for y in flat(lst)] if type(x) is list else [x]
+    return flat(lst)
 
 
 # Q7

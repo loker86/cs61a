@@ -27,6 +27,7 @@ def taxicab(a, b):
     9
     """
     "*** YOUR CODE HERE ***"
+    return abs(street(a)-street(b)) + abs(avenue(a)-avenue(b))
 
 def squares(s):
     """Returns a new list containing square roots of the elements of the
@@ -40,6 +41,7 @@ def squares(s):
     []
     """
     "*** YOUR CODE HERE ***"
+    return [int(i ** 0.5) for i in s if i ** 0.5 - int(i ** 0.5) == 0]
 
 def g(n):
     """Return the value of G(n), computed recursively.
@@ -59,6 +61,10 @@ def g(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n <= 3:
+        return n
+    else:
+        return g(n - 1) + 2 * g(n - 2) + 3 * g(n - 3)
 
 def g_iter(n):
     """Return the value of G(n), computed iteratively.
@@ -78,6 +84,14 @@ def g_iter(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n <= 3:
+        return n
+    i = 4
+    a, b, c = 3, 2, 1
+    while i <= n:
+        a, b, c = a + 2 * b + 3 * c, a, b
+        i += 1
+    return a
 
 def pingpong(n):
     """Return the nth element of the ping-pong sequence.
@@ -111,6 +125,20 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    def helper(i, num, up):
+        if i == n:
+            return num
+        if i % 7 == 0 or has_seven(i):
+            if not up == False:
+                return helper(i+1, num-1, not up)
+            else:
+                return helper(i+1, num+1, not up)
+        else:
+            if up == False:
+                return helper(i+1, num-1, up)
+            else:
+                return helper(i+1, num+1, up)
+    return helper(1, 1, True)
 
 def has_seven(k):
     """Returns True if at least one of the digits of k is a 7, False otherwise.
@@ -148,6 +176,15 @@ def count_change(amount):
     9828
     """
     "*** YOUR CODE HERE ***"
+    def count(base, amount):
+        if amount == 0:
+            return 1
+        elif amount < 0:
+            return 0
+        elif base > amount:
+            return 0
+        return count(2 * base, amount) + count(base, amount - base)
+    return count(1, amount)
 
 ###################
 # Extra Questions #
@@ -164,4 +201,4 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return lambda b: (lambda a, b: a(a, b))(lambda a, b: b*a(a, b-1) if b > 0 else 1, b)
