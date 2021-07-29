@@ -34,7 +34,9 @@ def merge(lst1, lst2):
     [2, 4, 5, 6, 7]
     """
     "*** YOUR CODE HERE ***"
-    return lst1 + lst2
+    res = (lst1 + lst2)
+    res.sort()
+    return res
 
 ######################
 ### Connect N Game ###
@@ -48,6 +50,7 @@ def create_row(size):
     ['-', '-', '-', '-', '-']
     """
     "*** YOUR CODE HERE ***"
+    return ['-'] * size
 
 
 def create_board(rows, columns):
@@ -57,6 +60,7 @@ def create_board(rows, columns):
     [['-', '-', '-', '-', '-'], ['-', '-', '-', '-', '-'], ['-', '-', '-', '-', '-']]
     """
     "*** YOUR CODE HERE ***"
+    return ([['-'] * columns]) * rows
 
 
 def replace_elem(lst, index, elem):
@@ -72,6 +76,9 @@ def replace_elem(lst, index, elem):
     """
     assert index >= 0 and index < len(lst), 'Index is out of bounds'
     "*** YOUR CODE HERE ***"
+    res = lst.copy()
+    res[index] = elem
+    return res
 
 
 def get_piece(board, row, column):
